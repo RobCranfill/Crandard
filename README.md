@@ -16,6 +16,6 @@ Then, since I had more room, I added a few more things we might like to see.
 The display is currently optimized for a Raspberry Pi with a 7-inch LCD display
 attached.
 
-Here's a pic of it in action:
+Here's a pic of it in action (complete with low-voltage warning; I need a new power supply):
 
 ![Image of Crandard in use](crandard-in-use.png)
