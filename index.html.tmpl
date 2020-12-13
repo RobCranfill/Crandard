@@ -16,7 +16,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="60">
+    <meta http-equiv="refresh" content="30">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
@@ -30,46 +30,60 @@
             background-color: lightblue;
             text-align: center;
             line-height: 70%;
-            padding-top:     5px;
-            padding-bottom: 15px;
-        }
+            padding-top:    15px;
+            padding-bottom:  1px;
+            }
         .tempSummary {
             font-family: 'Stylish'; font-size:  48px;
             # border: 1px outset red;
-            background-color: lightgreen;
+            background-color: lightblue;
             text-align: center;
             line-height: 10%;
-            padding: 5px;
-        }
+            padding-top:    1px;
+            padding-bottom: 5px;
+            }
+        .currentWind {
+            font-family: 'Stylish'; font-size: 64px;
+            # border: 1px outset red;
+            background-color: lightgreen;
+            text-align: center;
+            line-height: 70%;
+            padding-top:    15px;
+            padding-bottom: 15px;
+            }
         .rainSummary {
             font-family: 'Stylish'; font-size:  48px;
             # border: 1px outset red;
             background-color: lightblue;
             text-align: center;
             line-height: 100%;
-            padding: 5px;
-          }
-          .currentTime {
+            padding-top:    25px;
+            padding-bottom: 20px;
+            }
+        .currentTime {
             font-family: 'Stylish'; font-size: 32px;
             # border: 1px outset red;
             background-color: lightgreen;
             text-align: center;
             line-height: 100%;
-            padding: 5px;
-          }
-
+            padding-top:    25px;
+            padding-bottom: 25px;
+            }
     </style>
 </head>
 <body>
 
-   <div class="currentTemp">$current.outTemp</div>
-
-   <div class="tempSummary">
-      <p>hi: $day.outTemp.max @$day.outTemp.maxtime.format("%-I:%M %p")</p>
-      <p>lo: $day.outTemp.min @$day.outTemp.mintime.format("%-I:%M %p")</p>
+  <div class="currentTemp">$current.outTemp</div>
+  <div class="tempSummary">
+     <p>
+       24 hr: $span($hour_delta=24).outTemp.min &ndash; $span($hour_delta=24).outTemp.max
+     </p>
    </div>
 
-   <div class="rainSummary">Rain today: $day.rain.sum; this week: $week.rain.sum</div>
+   <div class="currentWind">$current.windSpeed ($span($time_delta=1800).windSpeed.max in 30m)</div>
+
+
+   <div class="rainSummary">Rain today: $day.rain.sum; last 7 days: $span($day_delta=7).rain.sum</div>
 
    <div class="currentTime">$current.dateTime.format("%-I:%M %p - %A, %-d %b %Y")</div>
 
