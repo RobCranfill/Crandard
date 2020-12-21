@@ -25,58 +25,81 @@
     <link rel="icon" type="image/png" href="favicon.ico" />
     <style>
         .currentTemp {
-            font-family: 'Stylish'; font-size: 160px;
-            # (use this for debugging, here and/or in the following blocks)
+            font-family: 'Stylish'; font-size: 128px;
             # border: 1px outset red;
             background-color: lightblue;
             text-align: center;
-            line-height: 80%;
+            line-height: 70%;
             padding-top:    15px;
             padding-bottom:  1px;
             }
         .tempSummary {
             font-family: 'Stylish'; font-size:  48px;
+            # border: 1px outset red;
             background-color: lightblue;
             text-align: center;
-            # line-height: 80%;
+            line-height: 10%;
             padding-top:    1px;
             padding-bottom: 5px;
             }
         .currentWind {
-            font-family: 'Stylish'; font-size: 96px;
+            font-family: 'Stylish'; font-size: 64px;
+            # border: 1px outset red;
             background-color: lightgreen;
             text-align: center;
-            line-height: 80%;
-            padding-top:    12px;
-            padding-bottom: 12px;
+            line-height: 70%;
+            padding-top:    20px;
+            padding-bottom: 20px;
             }
         .rainSummary {
             font-family: 'Stylish'; font-size:  48px;
+            # border: 1px outset red;
             background-color: lightblue;
             text-align: center;
-            # line-height: 100%;
-            padding-top:    12px;
-            padding-bottom: 12px;
+            line-height: 100%;
+            padding-top:    25px;
+            padding-bottom: 20px;
             }
         .currentTime {
-            font-family: 'Stylish'; font-size: 32px;
+            font-family: 'Stylish'; font-size: 48px;
+            # border: 1px outset red;
             background-color: lightgreen;
             text-align: center;
-            # line-height: 100%;
-            padding-top:    15px;
-            padding-bottom: 15px;
+            line-height: 100%;
+            padding-top:    25px;
+            padding-bottom: 25px;
             }
     </style>
+
+    <script>
+    function startAnimations() {
+      animateText();
+      setInterval(animateText, 4000);
+    }
+    function animateText() {
+      var a;
+      a = document.getElementById("windID");
+      a.innerHTML = "Now: $current.windSpeed";
+      setTimeout(function () {
+        a.innerHTML = "Max: $span($time_delta=1800).windSpeed.max";
+      }, 2000);
+    }
+    </script>
+
 </head>
-<body>
+<body onload="startAnimations()">
 
   <div class="currentTemp">$current.outTemp.format(format_string="%.0f")</div>
 
-  <div class="tempSummary">$span($hour_delta=24).outTemp.min.format(format_string="%.0f") &ndash; $span($hour_delta=24).outTemp.max.format(format_string="%.0f") (24 hr)</div>
+  <div class="tempSummary">
+    <p>
+      $span($hour_delta=24).outTemp.min.format(format_string="%.0f") &ndash; $span($hour_delta=24).outTemp.max.format(format_string="%.0f") (24 hr)
+    </p>
+  </div>
 
-   <div class="currentWind">$span($time_delta=300).windSpeed.max.format(add_label=False) &ndash; $span($time_delta=1800).windSpeed.max.format(add_label=False) MPH</div>
+   <div class="currentWind" id="windID">&mdash;</div>
 
-   <div class="rainSummary">Rain today: $day.rain.sum.format(add_label=False)&Prime;&semi; last 7 days: $span($day_delta=7).rain.sum.format(add_label=False)&Prime;</div>
+   <div class="rainSummary">Rain today: $day.rain.sum; last 7 days: $span($day_delta=7).rain.sum</div>
 
    <div class="currentTime">$current.dateTime.format("%-I:%M %p - %A, %-d %b %Y")</div>
 
