@@ -19,6 +19,6 @@ attached.
 The only files you need for your WeeWx installation are "skin.conf" and
 "index.html.tmpl"; the others are project files.
 
-Here's a pic of it in action (complete with low-voltage warning; I need a new power supply); note that this is a somewhat old version, not exactly as it stands now. Once I stop mucking with it I'll update to a final screenshot.
+Here's a screenshot of it in action. 
 
 ![Image of Crandard in use](crandard-in-use.png)
