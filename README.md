@@ -1,7 +1,7 @@
 # Crandard
 A WeeWX 'skin' for a small display; based on the "Standard" skin.
 
-With thanks to Vince, "tke...", and others in the weewx-user Google group. :-)
+With thanks to Tom K, Vince, and others in the weewx-user Google group. :-)
 
 This is a simple, easy-to-read "skin" for WeeWx, so that my wife and I can glance
 at the display before we take our dog for a walk. It shows us what we want to
